@@ -1,0 +1,11 @@
+# Instruction for Angular 18 Enterprise App Implementation (JSON 6-11)
+
+"For the Angular 18 enterprise app project, generate the implementation for the following JSON files: `data.json`, `i18n.json`, `animations.json`, `theming.json`, `security.json`, and `microfrontend.json`. For each JSON:  
+
+1. Create a sample JSON file with a structure reflecting its purpose (e.g., reference lists for `data.json`, translations for `i18n.json`, animation definitions for `animations.json`, theme settings for `theming.json`, role-based access for `security.json`, remote module configs for `microfrontend.json`).  
+2. Develop a dedicated Angular service in `app/core/services/` (e.g., `DataService`, `I18nService`, `AnimationService`, `ThemingService`, `SecurityService`, `MicrofrontendService`) to fetch the JSON via `HttpClient` and expose it using RxJS Observables or Signals, integrating `APP_INITIALIZER` for runtime loading.  
+3. Define TypeScript interfaces in `app/core/models/` (e.g., `DataModel`, `I18nModel`, `AnimationModel`, `ThemingModel`, `SecurityModel`, `MicrofrontendModel`) for type safety.  
+4. Provide application logic demonstrating service integration with feature modules (e.g., domain data lookups for `data.json`, localization for `i18n.json`, dynamic animations for `animations.json`, runtime theming for `theming.json`, access control for `security.json`, micro-frontend loading for `microfrontend.json`).  
+5. Utilize recommended tools from the project’s 'Potential Tools' section (e.g., NgRx/Akita for `data.json`, ngx-translate for `i18n.json`, ngx-lottie/Anime.js for `animations.json`, Tailwind/ngx-theme for `theming.json`, ngx-permissions/Casbin for `security.json`, @angular-architects/module-federation for `microfrontend.json`).  
+6. Include a frontend testing setup with Microsoft tools (e.g., Playwright for E2E tests) to validate the JSON-driven functionality, meeting client requirements.  
+7. Focus on one JSON at a time, ensuring runtime configurability and a decoupled architecture as outlined in the project goals."
