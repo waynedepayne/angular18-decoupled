@@ -1,0 +1,76 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2023-10-15",
+  "analyticsEnabled": true,
+  "providers": [
+    {
+      "name": "google-analytics",
+      "enabled": true,
+      "trackingId": "UA-XXXXXXXXX-X",
+      "options": {
+        "anonymizeIp": true,
+        "sendPageView": true,
+        "trackExceptions": true
+      }
+    },
+    {
+      "name": "mixpanel",
+      "enabled": true,
+      "token": "YOUR_MIXPANEL_TOKEN",
+      "options": {
+        "debug": false,
+        "persistence": "localStorage"
+      }
+    },
+    {
+      "name": "custom-logger",
+      "enabled": false,
+      "endpoint": "https://api.example.com/analytics",
+      "options": {
+        "batchSize": 10,
+        "flushInterval": 30000
+      }
+    }
+  ],
+  "eventSampling": {
+    "buttonClick": 1.0,
+    "pageView": 1.0,
+    "formSubmit": 1.0,
+    "error": 1.0,
+    "performance": 0.5
+  },
+  "eventDefinitions": {
+    "buttonClick": {
+      "requiredProperties": ["buttonId", "buttonText"],
+      "optionalProperties": ["pageContext", "userRole"]
+    },
+    "pageView": {
+      "requiredProperties": ["pagePath", "pageTitle"],
+      "optionalProperties": ["referrer", "loadTime"]
+    },
+    "formSubmit": {
+      "requiredProperties": ["formId", "formName"],
+      "optionalProperties": ["formFields", "formValues", "validationErrors"]
+    },
+    "error": {
+      "requiredProperties": ["errorMessage", "errorType"],
+      "optionalProperties": ["stackTrace", "componentName"]
+    },
+    "performance": {
+      "requiredProperties": ["metricName", "metricValue"],
+      "optionalProperties": ["metricUnit", "context"]
+    }
+  },
+  "userProperties": {
+    "allowedProperties": ["userId", "userRole", "userPreferences", "userLocale"],
+    "identifyOnInit": true,
+    "anonymizeByDefault": false
+  },
+  "privacySettings": {
+    "cookieConsent": true,
+    "dataRetentionDays": 90,
+    "allowDoNotTrack": true,
+    "respectGdpr": true
+  },
+  "debugMode": false
+} 

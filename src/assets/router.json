@@ -1,0 +1,213 @@
+{
+  "routes": [
+    {
+      "path": "",
+      "redirectTo": "dashboard",
+      "pathMatch": "full"
+    },
+    {
+      "path": "dashboard",
+      "component": "DashboardComponent",
+      "data": {
+        "title": "Dashboard",
+        "icon": "dashboard",
+        "permissions": ["user", "admin"]
+      }
+    },
+    {
+      "path": "config-demo",
+      "component": "ConfigDemoComponent",
+      "data": {
+        "title": "Configuration",
+        "icon": "settings",
+        "permissions": ["admin"]
+      }
+    },
+    {
+      "path": "design-demo",
+      "component": "DesignDemoComponent",
+      "data": {
+        "title": "Design System",
+        "icon": "palette",
+        "permissions": ["admin"]
+      }
+    },
+    {
+      "path": "router-demo",
+      "component": "RouterDemoComponent",
+      "data": {
+        "title": "Dynamic Routing",
+        "icon": "route",
+        "permissions": ["admin"]
+      }
+    },
+    {
+      "path": "products",
+      "data": {
+        "title": "Products",
+        "icon": "inventory_2",
+        "permissions": ["user", "admin"]
+      },
+      "children": [
+        {
+          "path": "",
+          "component": "ProductListComponent",
+          "data": {
+            "title": "Product List",
+            "permissions": ["user", "admin"]
+          }
+        },
+        {
+          "path": "create",
+          "component": "ProductCreateComponent",
+          "data": {
+            "title": "Create Product",
+            "permissions": ["admin"]
+          }
+        },
+        {
+          "path": ":id",
+          "component": "ProductDetailComponent",
+          "data": {
+            "title": "Product Detail",
+            "permissions": ["user", "admin"]
+          }
+        },
+        {
+          "path": ":id/edit",
+          "component": "ProductEditComponent",
+          "data": {
+            "title": "Edit Product",
+            "permissions": ["admin"]
+          }
+        }
+      ]
+    },
+    {
+      "path": "customers",
+      "data": {
+        "title": "Customers",
+        "icon": "people",
+        "permissions": ["user", "admin"]
+      },
+      "children": [
+        {
+          "path": "",
+          "component": "CustomerListComponent",
+          "data": {
+            "title": "Customer List",
+            "permissions": ["user", "admin"]
+          }
+        },
+        {
+          "path": "create",
+          "component": "CustomerCreateComponent",
+          "data": {
+            "title": "Create Customer",
+            "permissions": ["admin"]
+          }
+        },
+        {
+          "path": ":id",
+          "component": "CustomerDetailComponent",
+          "data": {
+            "title": "Customer Detail",
+            "permissions": ["user", "admin"]
+          }
+        },
+        {
+          "path": ":id/edit",
+          "component": "CustomerEditComponent",
+          "data": {
+            "title": "Edit Customer",
+            "permissions": ["admin"]
+          }
+        }
+      ]
+    },
+    {
+      "path": "reports",
+      "loadChildren": "ReportsModule",
+      "data": {
+        "title": "Reports",
+        "icon": "bar_chart",
+        "permissions": ["admin"]
+      }
+    },
+    {
+      "path": "settings",
+      "loadChildren": "SettingsModule",
+      "data": {
+        "title": "Settings",
+        "icon": "settings",
+        "permissions": ["admin"]
+      }
+    },
+    {
+      "path": "profile",
+      "component": "ProfileComponent",
+      "data": {
+        "title": "User Profile",
+        "icon": "person",
+        "permissions": ["user", "admin"]
+      }
+    },
+    {
+      "path": "login",
+      "component": "LoginComponent",
+      "data": {
+        "title": "Login",
+        "hideNavigation": true,
+        "permissions": ["anonymous"]
+      }
+    },
+    {
+      "path": "register",
+      "component": "RegisterComponent",
+      "data": {
+        "title": "Register",
+        "hideNavigation": true,
+        "permissions": ["anonymous"]
+      }
+    },
+    {
+      "path": "**",
+      "component": "NotFoundComponent",
+      "data": {
+        "title": "Page Not Found",
+        "hideNavigation": true,
+        "permissions": ["anonymous", "user", "admin"]
+      }
+    }
+  ],
+  "guards": {
+    "auth": {
+      "type": "canActivate",
+      "roles": ["user", "admin"]
+    },
+    "admin": {
+      "type": "canActivate",
+      "roles": ["admin"]
+    },
+    "unsavedChanges": {
+      "type": "canDeactivate",
+      "applyTo": ["ProductCreateComponent", "ProductEditComponent", "CustomerCreateComponent", "CustomerEditComponent"]
+    }
+  },
+  "resolvers": {
+    "productData": {
+      "dataService": "ProductService",
+      "method": "getProduct",
+      "applyTo": ["ProductDetailComponent", "ProductEditComponent"]
+    },
+    "customerData": {
+      "dataService": "CustomerService",
+      "method": "getCustomer",
+      "applyTo": ["CustomerDetailComponent", "CustomerEditComponent"]
+    }
+  },
+  "defaultErrorRoute": "/not-found",
+  "defaultAuthRoute": "/login",
+  "defaultSuccessRoute": "/dashboard",
+  "routeTrackingStrategy": "PathStrategy"
+} 

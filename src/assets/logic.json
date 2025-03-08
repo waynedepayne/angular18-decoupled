@@ -1,0 +1,438 @@
+{
+  "workflows": {
+    "checkout": {
+      "initialState": "cart",
+      "states": {
+        "cart": {
+          "actions": [
+            {
+              "type": "validateCart",
+              "params": {
+                "minItems": 1,
+                "maxItems": 50
+              }
+            }
+          ],
+          "transitions": [
+            {
+              "target": "shipping",
+              "condition": "cart.items.length > 0",
+              "event": "PROCEED_TO_SHIPPING"
+            },
+            {
+              "target": "cart",
+              "condition": "cart.items.length === 0",
+              "event": "PROCEED_TO_SHIPPING",
+              "actions": [
+                {
+                  "type": "showError",
+                  "params": {
+                    "message": "Your cart is empty. Please add items before proceeding."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "shipping": {
+          "actions": [
+            {
+              "type": "loadShippingOptions",
+              "params": {
+                "countryCode": "user.address.country"
+              }
+            }
+          ],
+          "transitions": [
+            {
+              "target": "payment",
+              "condition": "shipping.address.isValid",
+              "event": "PROCEED_TO_PAYMENT"
+            },
+            {
+              "target": "cart",
+              "event": "BACK_TO_CART"
+            }
+          ]
+        },
+        "payment": {
+          "actions": [
+            {
+              "type": "loadPaymentMethods",
+              "params": {
+                "countryCode": "shipping.address.country"
+              }
+            }
+          ],
+          "transitions": [
+            {
+              "target": "review",
+              "condition": "payment.method.isValid",
+              "event": "PROCEED_TO_REVIEW"
+            },
+            {
+              "target": "shipping",
+              "event": "BACK_TO_SHIPPING"
+            }
+          ]
+        },
+        "review": {
+          "actions": [
+            {
+              "type": "calculateTotals",
+              "params": {
+                "includeShipping": true,
+                "includeTax": true
+              }
+            }
+          ],
+          "transitions": [
+            {
+              "target": "confirmation",
+              "event": "PLACE_ORDER",
+              "actions": [
+                {
+                  "type": "processPayment",
+                  "params": {
+                    "paymentMethodId": "payment.method.id"
+                  }
+                },
+                {
+                  "type": "createOrder",
+                  "params": {
+                    "items": "cart.items",
+                    "shipping": "shipping.selected",
+                    "payment": "payment.method"
+                  }
+                }
+              ]
+            },
+            {
+              "target": "payment",
+              "event": "BACK_TO_PAYMENT"
+            }
+          ]
+        },
+        "confirmation": {
+          "actions": [
+            {
+              "type": "sendOrderConfirmation",
+              "params": {
+                "email": "user.email",
+                "orderId": "order.id"
+              }
+            },
+            {
+              "type": "clearCart"
+            }
+          ],
+          "transitions": [
+            {
+              "target": "cart",
+              "event": "CONTINUE_SHOPPING"
+            }
+          ]
+        }
+      }
+    },
+    "userRegistration": {
+      "initialState": "collectInfo",
+      "states": {
+        "collectInfo": {
+          "actions": [],
+          "transitions": [
+            {
+              "target": "validateEmail",
+              "event": "SUBMIT_REGISTRATION",
+              "condition": "form.isValid"
+            }
+          ]
+        },
+        "validateEmail": {
+          "actions": [
+            {
+              "type": "checkEmailExists",
+              "params": {
+                "email": "form.email"
+              }
+            }
+          ],
+          "transitions": [
+            {
+              "target": "createAccount",
+              "condition": "!email.exists",
+              "event": "EMAIL_VALIDATED"
+            },
+            {
+              "target": "collectInfo",
+              "condition": "email.exists",
+              "event": "EMAIL_VALIDATED",
+              "actions": [
+                {
+                  "type": "showError",
+                  "params": {
+                    "message": "Email already exists. Please use a different email or login."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "createAccount": {
+          "actions": [
+            {
+              "type": "createUser",
+              "params": {
+                "userData": "form"
+              }
+            },
+            {
+              "type": "sendVerificationEmail",
+              "params": {
+                "email": "form.email"
+              }
+            }
+          ],
+          "transitions": [
+            {
+              "target": "success",
+              "event": "ACCOUNT_CREATED"
+            }
+          ]
+        },
+        "success": {
+          "actions": [],
+          "transitions": [
+            {
+              "target": "login",
+              "event": "GO_TO_LOGIN"
+            }
+          ]
+        }
+      }
+    },
+    "productSearch": {
+      "initialState": "initial",
+      "states": {
+        "initial": {
+          "actions": [
+            {
+              "type": "loadCategories"
+            },
+            {
+              "type": "loadFeaturedProducts"
+            }
+          ],
+          "transitions": [
+            {
+              "target": "searching",
+              "event": "SEARCH",
+              "condition": "search.query.length > 2"
+            },
+            {
+              "target": "categoryView",
+              "event": "SELECT_CATEGORY"
+            }
+          ]
+        },
+        "searching": {
+          "actions": [
+            {
+              "type": "searchProducts",
+              "params": {
+                "query": "search.query",
+                "filters": "search.filters"
+              }
+            }
+          ],
+          "transitions": [
+            {
+              "target": "searchResults",
+              "event": "SEARCH_COMPLETED"
+            }
+          ]
+        },
+        "searchResults": {
+          "actions": [],
+          "transitions": [
+            {
+              "target": "productDetail",
+              "event": "SELECT_PRODUCT"
+            },
+            {
+              "target": "searching",
+              "event": "REFINE_SEARCH"
+            },
+            {
+              "target": "initial",
+              "event": "CLEAR_SEARCH"
+            }
+          ]
+        },
+        "categoryView": {
+          "actions": [
+            {
+              "type": "loadCategoryProducts",
+              "params": {
+                "categoryId": "selected.category.id",
+                "filters": "category.filters"
+              }
+            }
+          ],
+          "transitions": [
+            {
+              "target": "productDetail",
+              "event": "SELECT_PRODUCT"
+            },
+            {
+              "target": "initial",
+              "event": "BACK_TO_HOME"
+            }
+          ]
+        },
+        "productDetail": {
+          "actions": [
+            {
+              "type": "loadProductDetails",
+              "params": {
+                "productId": "selected.product.id"
+              }
+            },
+            {
+              "type": "loadRelatedProducts",
+              "params": {
+                "productId": "selected.product.id"
+              }
+            }
+          ],
+          "transitions": [
+            {
+              "target": "searchResults",
+              "event": "BACK_TO_RESULTS",
+              "condition": "from === 'searchResults'"
+            },
+            {
+              "target": "categoryView",
+              "event": "BACK_TO_CATEGORY",
+              "condition": "from === 'categoryView'"
+            },
+            {
+              "target": "cart",
+              "event": "ADD_TO_CART",
+              "actions": [
+                {
+                  "type": "addToCart",
+                  "params": {
+                    "product": "selected.product",
+                    "quantity": "selected.quantity"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "actions": {
+    "validateCart": {
+      "type": "validation",
+      "handler": "CartService.validateCart"
+    },
+    "showError": {
+      "type": "ui",
+      "handler": "NotificationService.showError"
+    },
+    "loadShippingOptions": {
+      "type": "api",
+      "handler": "ShippingService.getOptions"
+    },
+    "loadPaymentMethods": {
+      "type": "api",
+      "handler": "PaymentService.getMethods"
+    },
+    "calculateTotals": {
+      "type": "calculation",
+      "handler": "OrderService.calculateTotals"
+    },
+    "processPayment": {
+      "type": "api",
+      "handler": "PaymentService.processPayment"
+    },
+    "createOrder": {
+      "type": "api",
+      "handler": "OrderService.createOrder"
+    },
+    "sendOrderConfirmation": {
+      "type": "notification",
+      "handler": "NotificationService.sendOrderConfirmation"
+    },
+    "clearCart": {
+      "type": "data",
+      "handler": "CartService.clearCart"
+    },
+    "checkEmailExists": {
+      "type": "api",
+      "handler": "UserService.checkEmailExists"
+    },
+    "createUser": {
+      "type": "api",
+      "handler": "UserService.createUser"
+    },
+    "sendVerificationEmail": {
+      "type": "notification",
+      "handler": "NotificationService.sendVerificationEmail"
+    },
+    "loadCategories": {
+      "type": "api",
+      "handler": "ProductService.getCategories"
+    },
+    "loadFeaturedProducts": {
+      "type": "api",
+      "handler": "ProductService.getFeaturedProducts"
+    },
+    "searchProducts": {
+      "type": "api",
+      "handler": "ProductService.searchProducts"
+    },
+    "loadCategoryProducts": {
+      "type": "api",
+      "handler": "ProductService.getCategoryProducts"
+    },
+    "loadProductDetails": {
+      "type": "api",
+      "handler": "ProductService.getProductDetails"
+    },
+    "loadRelatedProducts": {
+      "type": "api",
+      "handler": "ProductService.getRelatedProducts"
+    },
+    "addToCart": {
+      "type": "data",
+      "handler": "CartService.addItem"
+    }
+  },
+  "services": {
+    "CartService": {
+      "methods": ["validateCart", "clearCart", "addItem", "removeItem", "updateQuantity"]
+    },
+    "ShippingService": {
+      "methods": ["getOptions", "calculateShipping"]
+    },
+    "PaymentService": {
+      "methods": ["getMethods", "processPayment", "validatePaymentDetails"]
+    },
+    "OrderService": {
+      "methods": ["calculateTotals", "createOrder", "getOrderHistory"]
+    },
+    "NotificationService": {
+      "methods": ["showError", "showSuccess", "sendOrderConfirmation", "sendVerificationEmail"]
+    },
+    "UserService": {
+      "methods": ["checkEmailExists", "createUser", "updateProfile", "resetPassword"]
+    },
+    "ProductService": {
+      "methods": ["getCategories", "getFeaturedProducts", "searchProducts", "getCategoryProducts", "getProductDetails", "getRelatedProducts"]
+    }
+  }
+} 

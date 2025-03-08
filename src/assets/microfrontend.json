@@ -1,0 +1,293 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2023-07-15T12:00:00Z",
+  "enabled": true,
+  "settings": {
+    "defaultTimeout": 10000,
+    "preloadAll": false,
+    "retryOnError": true,
+    "maxRetries": 3,
+    "showLoading": true,
+    "showErrors": true,
+    "containerClass": "remote-container"
+  },
+  "remotes": {
+    "dashboard": {
+      "name": "dashboard",
+      "url": "https://example.com/dashboard/remoteEntry.js",
+      "exposedModules": [
+        {
+          "name": "DashboardModule",
+          "type": "module",
+          "path": "./DashboardModule",
+          "enabled": true
+        },
+        {
+          "name": "DashboardComponent",
+          "type": "standalone",
+          "path": "./DashboardComponent",
+          "enabled": true
+        },
+        {
+          "name": "WidgetComponent",
+          "type": "standalone",
+          "path": "./WidgetComponent",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "preload": true
+    },
+    "reports": {
+      "name": "reports",
+      "url": "https://example.com/reports/remoteEntry.js",
+      "exposedModules": [
+        {
+          "name": "ReportsModule",
+          "type": "module",
+          "path": "./ReportsModule",
+          "enabled": true
+        },
+        {
+          "name": "ReportListComponent",
+          "type": "standalone",
+          "path": "./ReportListComponent",
+          "enabled": true
+        },
+        {
+          "name": "ReportDetailComponent",
+          "type": "standalone",
+          "path": "./ReportDetailComponent",
+          "enabled": true
+        },
+        {
+          "name": "ReportService",
+          "type": "service",
+          "path": "./ReportService",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "timeout": 15000,
+      "errorHandling": {
+        "retry": true,
+        "maxRetries": 2,
+        "fallback": "ReportsFallbackComponent"
+      }
+    },
+    "admin": {
+      "name": "admin",
+      "url": "https://example.com/admin/remoteEntry.js",
+      "exposedModules": [
+        {
+          "name": "AdminModule",
+          "type": "module",
+          "path": "./AdminModule",
+          "enabled": true
+        },
+        {
+          "name": "UserManagementComponent",
+          "type": "standalone",
+          "path": "./UserManagementComponent",
+          "enabled": true
+        },
+        {
+          "name": "SettingsComponent",
+          "type": "standalone",
+          "path": "./SettingsComponent",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "preload": false
+    },
+    "catalog": {
+      "name": "catalog",
+      "url": "https://example.com/catalog/remoteEntry.js",
+      "exposedModules": [
+        {
+          "name": "CatalogModule",
+          "type": "module",
+          "path": "./CatalogModule",
+          "enabled": true
+        },
+        {
+          "name": "ProductListComponent",
+          "type": "standalone",
+          "path": "./ProductListComponent",
+          "enabled": true
+        },
+        {
+          "name": "ProductDetailComponent",
+          "type": "standalone",
+          "path": "./ProductDetailComponent",
+          "enabled": true
+        }
+      ],
+      "enabled": false
+    },
+    "analytics": {
+      "name": "analytics",
+      "url": "https://example.com/analytics/remoteEntry.js",
+      "exposedModules": [
+        {
+          "name": "AnalyticsModule",
+          "type": "module",
+          "path": "./AnalyticsModule",
+          "enabled": true
+        },
+        {
+          "name": "AnalyticsDashboardComponent",
+          "type": "standalone",
+          "path": "./AnalyticsDashboardComponent",
+          "enabled": true
+        },
+        {
+          "name": "AnalyticsService",
+          "type": "service",
+          "path": "./AnalyticsService",
+          "enabled": true
+        }
+      ],
+      "enabled": true
+    }
+  },
+  "routes": [
+    {
+      "path": "dashboard",
+      "remoteName": "dashboard",
+      "exposedModule": "DashboardComponent",
+      "enabled": true,
+      "lazy": true,
+      "data": {
+        "title": "Dashboard",
+        "icon": "dashboard"
+      }
+    },
+    {
+      "path": "reports",
+      "remoteName": "reports",
+      "exposedModule": "ReportListComponent",
+      "enabled": true,
+      "lazy": true,
+      "data": {
+        "title": "Reports",
+        "icon": "assessment"
+      },
+      "requiresAuth": true,
+      "roles": ["user", "admin"]
+    },
+    {
+      "path": "reports/:id",
+      "remoteName": "reports",
+      "exposedModule": "ReportDetailComponent",
+      "enabled": true,
+      "lazy": true,
+      "data": {
+        "title": "Report Details",
+        "icon": "description"
+      },
+      "requiresAuth": true,
+      "roles": ["user", "admin"]
+    },
+    {
+      "path": "admin",
+      "remoteName": "admin",
+      "exposedModule": "AdminModule",
+      "enabled": true,
+      "lazy": true,
+      "data": {
+        "title": "Administration",
+        "icon": "admin_panel_settings"
+      },
+      "requiresAuth": true,
+      "roles": ["admin"],
+      "children": [
+        {
+          "path": "users",
+          "remoteName": "admin",
+          "exposedModule": "UserManagementComponent",
+          "enabled": true,
+          "lazy": true,
+          "data": {
+            "title": "User Management",
+            "icon": "people"
+          }
+        },
+        {
+          "path": "settings",
+          "remoteName": "admin",
+          "exposedModule": "SettingsComponent",
+          "enabled": true,
+          "lazy": true,
+          "data": {
+            "title": "Settings",
+            "icon": "settings"
+          }
+        }
+      ]
+    },
+    {
+      "path": "catalog",
+      "remoteName": "catalog",
+      "exposedModule": "CatalogModule",
+      "enabled": false,
+      "lazy": true,
+      "data": {
+        "title": "Product Catalog",
+        "icon": "inventory"
+      }
+    },
+    {
+      "path": "analytics",
+      "remoteName": "analytics",
+      "exposedModule": "AnalyticsDashboardComponent",
+      "enabled": true,
+      "lazy": true,
+      "data": {
+        "title": "Analytics",
+        "icon": "analytics"
+      },
+      "requiresAuth": true,
+      "roles": ["admin"]
+    }
+  ],
+  "shared": {
+    "singleton": true,
+    "strictVersion": false,
+    "libs": [
+      {
+        "name": "@angular/core",
+        "singleton": true,
+        "strictVersion": true,
+        "eager": true
+      },
+      {
+        "name": "@angular/common",
+        "singleton": true,
+        "strictVersion": true,
+        "eager": true
+      },
+      {
+        "name": "@angular/router",
+        "singleton": true,
+        "strictVersion": true
+      },
+      {
+        "name": "@angular/forms",
+        "singleton": true,
+        "strictVersion": true
+      },
+      {
+        "name": "rxjs",
+        "singleton": true,
+        "strictVersion": false
+      },
+      {
+        "name": "@angular/material",
+        "singleton": true,
+        "strictVersion": false
+      }
+    ]
+  }
+} 

@@ -1,0 +1,552 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2023-07-15T12:00:00Z",
+  "settings": {
+    "enabled": true,
+    "defaultDuration": 300,
+    "defaultEasing": "ease-out",
+    "defaultDelay": 0,
+    "reducedMotion": {
+      "respectUserPreference": true,
+      "alternativeDuration": 0
+    }
+  },
+  "animations": {
+    "fadeIn": {
+      "type": "fade",
+      "duration": 300,
+      "easing": "ease-out",
+      "reverse": false
+    },
+    "fadeOut": {
+      "type": "fade",
+      "duration": 300,
+      "easing": "ease-in",
+      "reverse": true
+    },
+    "slideInLeft": {
+      "type": "slide",
+      "duration": 300,
+      "easing": "ease-out",
+      "params": {
+        "direction": "left",
+        "distance": "100%"
+      }
+    },
+    "slideInRight": {
+      "type": "slide",
+      "duration": 300,
+      "easing": "ease-out",
+      "params": {
+        "direction": "right",
+        "distance": "100%"
+      }
+    },
+    "slideInUp": {
+      "type": "slide",
+      "duration": 300,
+      "easing": "ease-out",
+      "params": {
+        "direction": "up",
+        "distance": "100%"
+      }
+    },
+    "slideInDown": {
+      "type": "slide",
+      "duration": 300,
+      "easing": "ease-out",
+      "params": {
+        "direction": "down",
+        "distance": "100%"
+      }
+    },
+    "slideOutLeft": {
+      "type": "slide",
+      "duration": 300,
+      "easing": "ease-in",
+      "reverse": true,
+      "params": {
+        "direction": "left",
+        "distance": "100%"
+      }
+    },
+    "slideOutRight": {
+      "type": "slide",
+      "duration": 300,
+      "easing": "ease-in",
+      "reverse": true,
+      "params": {
+        "direction": "right",
+        "distance": "100%"
+      }
+    },
+    "slideOutUp": {
+      "type": "slide",
+      "duration": 300,
+      "easing": "ease-in",
+      "reverse": true,
+      "params": {
+        "direction": "up",
+        "distance": "100%"
+      }
+    },
+    "slideOutDown": {
+      "type": "slide",
+      "duration": 300,
+      "easing": "ease-in",
+      "reverse": true,
+      "params": {
+        "direction": "down",
+        "distance": "100%"
+      }
+    },
+    "scaleIn": {
+      "type": "scale",
+      "duration": 300,
+      "easing": "ease-out",
+      "params": {
+        "fromScale": 0.5
+      }
+    },
+    "scaleOut": {
+      "type": "scale",
+      "duration": 300,
+      "easing": "ease-in",
+      "reverse": true,
+      "params": {
+        "fromScale": 0.5
+      }
+    },
+    "rotateIn": {
+      "type": "rotate",
+      "duration": 300,
+      "easing": "ease-out",
+      "params": {
+        "fromDegrees": -90
+      }
+    },
+    "rotateOut": {
+      "type": "rotate",
+      "duration": 300,
+      "easing": "ease-in",
+      "reverse": true,
+      "params": {
+        "fromDegrees": -90
+      }
+    },
+    "bounce": {
+      "type": "custom",
+      "states": {
+        "initial": {
+          "styles": {
+            "transform": "translateY(0)"
+          }
+        },
+        "bouncing": {
+          "styles": {
+            "transform": "translateY(0)"
+          }
+        }
+      },
+      "transitions": [
+        {
+          "fromState": "initial",
+          "toState": "bouncing",
+          "duration": 1000,
+          "easing": "cubic-bezier(0.215, 0.610, 0.355, 1.000)",
+          "steps": [
+            {
+              "type": "keyframes",
+              "steps": [
+                {
+                  "styles": {
+                    "transform": "translateY(0)",
+                    "offset": 0
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateY(-30px)",
+                    "offset": 0.2
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateY(0)",
+                    "offset": 0.4
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateY(-15px)",
+                    "offset": 0.6
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateY(0)",
+                    "offset": 0.8
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateY(-5px)",
+                    "offset": 0.9
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateY(0)",
+                    "offset": 1
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "shake": {
+      "type": "custom",
+      "states": {
+        "initial": {
+          "styles": {
+            "transform": "translateX(0)"
+          }
+        },
+        "shaking": {
+          "styles": {
+            "transform": "translateX(0)"
+          }
+        }
+      },
+      "transitions": [
+        {
+          "fromState": "initial",
+          "toState": "shaking",
+          "duration": 500,
+          "easing": "ease-in-out",
+          "steps": [
+            {
+              "type": "keyframes",
+              "steps": [
+                {
+                  "styles": {
+                    "transform": "translateX(0)",
+                    "offset": 0
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateX(-10px)",
+                    "offset": 0.1
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateX(10px)",
+                    "offset": 0.3
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateX(-10px)",
+                    "offset": 0.5
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateX(10px)",
+                    "offset": 0.7
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateX(-10px)",
+                    "offset": 0.9
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "translateX(0)",
+                    "offset": 1
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pulse": {
+      "type": "custom",
+      "states": {
+        "initial": {
+          "styles": {
+            "transform": "scale(1)"
+          }
+        },
+        "pulsing": {
+          "styles": {
+            "transform": "scale(1)"
+          }
+        }
+      },
+      "transitions": [
+        {
+          "fromState": "initial",
+          "toState": "pulsing",
+          "duration": 500,
+          "easing": "ease-in-out",
+          "steps": [
+            {
+              "type": "keyframes",
+              "steps": [
+                {
+                  "styles": {
+                    "transform": "scale(1)",
+                    "offset": 0
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "scale(1.05)",
+                    "offset": 0.5
+                  }
+                },
+                {
+                  "styles": {
+                    "transform": "scale(1)",
+                    "offset": 1
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "flipX": {
+      "type": "custom",
+      "states": {
+        "initial": {
+          "styles": {
+            "transform": "perspective(400px) rotateX(0)",
+            "backfaceVisibility": "visible"
+          }
+        },
+        "flipped": {
+          "styles": {
+            "transform": "perspective(400px) rotateX(180deg)",
+            "backfaceVisibility": "visible"
+          }
+        }
+      },
+      "transitions": [
+        {
+          "fromState": "initial",
+          "toState": "flipped",
+          "duration": 800,
+          "easing": "ease-in-out"
+        },
+        {
+          "fromState": "flipped",
+          "toState": "initial",
+          "duration": 800,
+          "easing": "ease-in-out"
+        }
+      ]
+    },
+    "flipY": {
+      "type": "custom",
+      "states": {
+        "initial": {
+          "styles": {
+            "transform": "perspective(400px) rotateY(0)",
+            "backfaceVisibility": "visible"
+          }
+        },
+        "flipped": {
+          "styles": {
+            "transform": "perspective(400px) rotateY(180deg)",
+            "backfaceVisibility": "visible"
+          }
+        }
+      },
+      "transitions": [
+        {
+          "fromState": "initial",
+          "toState": "flipped",
+          "duration": 800,
+          "easing": "ease-in-out"
+        },
+        {
+          "fromState": "flipped",
+          "toState": "initial",
+          "duration": 800,
+          "easing": "ease-in-out"
+        }
+      ]
+    }
+  },
+  "sequences": {
+    "pageEnter": {
+      "description": "Animation sequence for page entry",
+      "steps": [
+        {
+          "animation": "fadeIn",
+          "target": ".page-container",
+          "duration": 500
+        },
+        {
+          "animation": "slideInLeft",
+          "target": ".page-header",
+          "delay": 100
+        },
+        {
+          "animation": "fadeIn",
+          "target": ".page-content",
+          "delay": 200
+        }
+      ]
+    },
+    "pageExit": {
+      "description": "Animation sequence for page exit",
+      "steps": [
+        {
+          "animation": "fadeOut",
+          "target": ".page-content",
+          "duration": 200
+        },
+        {
+          "animation": "fadeOut",
+          "target": ".page-header",
+          "delay": 100
+        },
+        {
+          "animation": "fadeOut",
+          "target": ".page-container",
+          "delay": 200,
+          "duration": 300
+        }
+      ]
+    },
+    "listEnter": {
+      "description": "Animation sequence for list items entry",
+      "steps": [
+        {
+          "animation": "fadeIn",
+          "target": ".list-container",
+          "duration": 300
+        },
+        {
+          "animation": "slideInLeft",
+          "target": ".list-item",
+          "duration": 300,
+          "params": {
+            "staggered": true,
+            "staggerDelay": 50
+          }
+        }
+      ]
+    },
+    "formEnter": {
+      "description": "Animation sequence for form entry",
+      "steps": [
+        {
+          "animation": "fadeIn",
+          "target": ".form-container",
+          "duration": 300
+        },
+        {
+          "animation": "slideInUp",
+          "target": ".form-header",
+          "delay": 100
+        },
+        {
+          "animation": "fadeIn",
+          "target": ".form-field",
+          "delay": 200,
+          "params": {
+            "staggered": true,
+            "staggerDelay": 50
+          }
+        },
+        {
+          "animation": "scaleIn",
+          "target": ".form-submit",
+          "delay": 400
+        }
+      ]
+    },
+    "modalEnter": {
+      "description": "Animation sequence for modal entry",
+      "steps": [
+        {
+          "animation": "fadeIn",
+          "target": ".modal-backdrop",
+          "duration": 200
+        },
+        {
+          "animation": "scaleIn",
+          "target": ".modal-container",
+          "delay": 100,
+          "duration": 300,
+          "params": {
+            "fromScale": 0.7
+          }
+        }
+      ]
+    },
+    "modalExit": {
+      "description": "Animation sequence for modal exit",
+      "steps": [
+        {
+          "animation": "scaleOut",
+          "target": ".modal-container",
+          "duration": 200,
+          "params": {
+            "fromScale": 0.7
+          }
+        },
+        {
+          "animation": "fadeOut",
+          "target": ".modal-backdrop",
+          "delay": 100,
+          "duration": 200
+        }
+      ]
+    },
+    "notificationEnter": {
+      "description": "Animation sequence for notification entry",
+      "steps": [
+        {
+          "animation": "slideInRight",
+          "target": ".notification",
+          "duration": 300,
+          "params": {
+            "distance": "120%"
+          }
+        },
+        {
+          "animation": "pulse",
+          "target": ".notification-icon",
+          "delay": 300
+        }
+      ]
+    },
+    "notificationExit": {
+      "description": "Animation sequence for notification exit",
+      "steps": [
+        {
+          "animation": "slideOutRight",
+          "target": ".notification",
+          "duration": 300,
+          "params": {
+            "distance": "120%"
+          }
+        }
+      ]
+    }
+  }
+} 

@@ -1,0 +1,317 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2023-07-15T12:00:00Z",
+  "defaultRole": "guest",
+  "strictAccessControl": true,
+  "roles": {
+    "guest": {
+      "name": "Guest",
+      "description": "Unauthenticated user with limited access",
+      "isSystem": true,
+      "permissions": [
+        "view:public"
+      ]
+    },
+    "user": {
+      "name": "User",
+      "description": "Standard authenticated user",
+      "isSystem": true,
+      "inherits": ["guest"],
+      "permissions": [
+        "view:user",
+        "edit:profile"
+      ]
+    },
+    "editor": {
+      "name": "Editor",
+      "description": "User with content editing privileges",
+      "inherits": ["user"],
+      "permissions": [
+        "edit:content",
+        "publish:content"
+      ]
+    },
+    "manager": {
+      "name": "Manager",
+      "description": "User with management privileges",
+      "inherits": ["user"],
+      "permissions": [
+        "view:reports",
+        "manage:users"
+      ]
+    },
+    "admin": {
+      "name": "Administrator",
+      "description": "User with full administrative privileges",
+      "isSystem": true,
+      "permissions": [
+        "admin:all"
+      ]
+    },
+    "developer": {
+      "name": "Developer",
+      "description": "Technical user with system access",
+      "permissions": [
+        "view:logs",
+        "view:system",
+        "edit:system"
+      ]
+    }
+  },
+  "permissions": {
+    "view:public": {
+      "name": "View Public Content",
+      "description": "Access to public pages and content",
+      "resourceType": "route"
+    },
+    "view:user": {
+      "name": "View User Content",
+      "description": "Access to user-specific content",
+      "resourceType": "route"
+    },
+    "edit:profile": {
+      "name": "Edit Profile",
+      "description": "Edit own user profile",
+      "resourceType": "feature",
+      "actions": ["view", "edit"]
+    },
+    "edit:content": {
+      "name": "Edit Content",
+      "description": "Create and edit content",
+      "resourceType": "feature",
+      "actions": ["create", "view", "edit"]
+    },
+    "publish:content": {
+      "name": "Publish Content",
+      "description": "Publish content to make it visible",
+      "resourceType": "feature",
+      "actions": ["publish", "unpublish"]
+    },
+    "view:reports": {
+      "name": "View Reports",
+      "description": "Access to analytics and reports",
+      "resourceType": "route"
+    },
+    "manage:users": {
+      "name": "Manage Users",
+      "description": "Create, edit, and deactivate users",
+      "resourceType": "feature",
+      "actions": ["create", "view", "edit", "deactivate"]
+    },
+    "admin:all": {
+      "name": "Full Administration",
+      "description": "Complete access to all system features",
+      "resourceType": "system"
+    },
+    "view:logs": {
+      "name": "View Logs",
+      "description": "Access to system logs",
+      "resourceType": "route"
+    },
+    "view:system": {
+      "name": "View System",
+      "description": "Access to system configuration",
+      "resourceType": "route"
+    },
+    "edit:system": {
+      "name": "Edit System",
+      "description": "Modify system configuration",
+      "resourceType": "feature",
+      "actions": ["view", "edit"]
+    }
+  },
+  "routes": [
+    {
+      "path": "",
+      "allowedRoles": ["guest", "user", "editor", "manager", "admin", "developer"]
+    },
+    {
+      "path": "login",
+      "allowedRoles": ["guest"]
+    },
+    {
+      "path": "register",
+      "allowedRoles": ["guest"]
+    },
+    {
+      "path": "profile",
+      "allowedRoles": ["user", "editor", "manager", "admin", "developer"],
+      "redirectTo": "login",
+      "requiredPermissions": ["edit:profile"]
+    },
+    {
+      "path": "dashboard",
+      "allowedRoles": ["user", "editor", "manager", "admin", "developer"],
+      "redirectTo": "login"
+    },
+    {
+      "path": "content",
+      "allowedRoles": ["editor", "admin"],
+      "redirectTo": "dashboard",
+      "requiredPermissions": ["edit:content"],
+      "children": [
+        {
+          "path": "create",
+          "allowedRoles": ["editor", "admin"],
+          "requiredPermissions": ["edit:content"]
+        },
+        {
+          "path": "publish",
+          "allowedRoles": ["editor", "admin"],
+          "requiredPermissions": ["publish:content"]
+        }
+      ]
+    },
+    {
+      "path": "reports",
+      "allowedRoles": ["manager", "admin"],
+      "redirectTo": "dashboard",
+      "requiredPermissions": ["view:reports"],
+      "hideIfNotAccessible": true
+    },
+    {
+      "path": "admin",
+      "allowedRoles": ["admin"],
+      "redirectTo": "dashboard",
+      "requiredPermissions": ["admin:all"],
+      "hideIfNotAccessible": true,
+      "children": [
+        {
+          "path": "users",
+          "allowedRoles": ["admin"],
+          "requiredPermissions": ["manage:users"]
+        },
+        {
+          "path": "settings",
+          "allowedRoles": ["admin"],
+          "requiredPermissions": ["admin:all"]
+        }
+      ]
+    },
+    {
+      "path": "system",
+      "allowedRoles": ["developer", "admin"],
+      "redirectTo": "dashboard",
+      "hideIfNotAccessible": true,
+      "children": [
+        {
+          "path": "logs",
+          "allowedRoles": ["developer", "admin"],
+          "requiredPermissions": ["view:logs"]
+        },
+        {
+          "path": "config",
+          "allowedRoles": ["developer", "admin"],
+          "requiredPermissions": ["view:system"]
+        }
+      ]
+    },
+    {
+      "path": "**",
+      "redirectTo": ""
+    }
+  ],
+  "features": [
+    {
+      "featureId": "profile-edit",
+      "allowedRoles": ["user", "editor", "manager", "admin", "developer"],
+      "requiredPermissions": ["edit:profile"],
+      "hideIfNotAccessible": true
+    },
+    {
+      "featureId": "content-management",
+      "allowedRoles": ["editor", "admin"],
+      "requiredPermissions": ["edit:content"],
+      "hideIfNotAccessible": true
+    },
+    {
+      "featureId": "content-publishing",
+      "allowedRoles": ["editor", "admin"],
+      "requiredPermissions": ["publish:content"],
+      "hideIfNotAccessible": true
+    },
+    {
+      "featureId": "user-management",
+      "allowedRoles": ["admin"],
+      "requiredPermissions": ["manage:users"],
+      "hideIfNotAccessible": true
+    },
+    {
+      "featureId": "system-logs",
+      "allowedRoles": ["developer", "admin"],
+      "requiredPermissions": ["view:logs"],
+      "hideIfNotAccessible": true
+    },
+    {
+      "featureId": "system-config",
+      "allowedRoles": ["developer", "admin"],
+      "requiredPermissions": ["edit:system"],
+      "hideIfNotAccessible": true
+    }
+  ],
+  "apis": [
+    {
+      "urlPattern": "/api/public/**",
+      "methods": ["GET"],
+      "allowedRoles": ["guest", "user", "editor", "manager", "admin", "developer"]
+    },
+    {
+      "urlPattern": "/api/auth/**",
+      "methods": ["POST"],
+      "allowedRoles": ["guest", "user", "editor", "manager", "admin", "developer"]
+    },
+    {
+      "urlPattern": "/api/users/profile",
+      "methods": ["GET", "PUT"],
+      "allowedRoles": ["user", "editor", "manager", "admin", "developer"],
+      "requiredPermissions": ["edit:profile"]
+    },
+    {
+      "urlPattern": "/api/content/**",
+      "methods": ["GET", "POST", "PUT", "DELETE"],
+      "allowedRoles": ["editor", "admin"],
+      "requiredPermissions": ["edit:content"]
+    },
+    {
+      "urlPattern": "/api/content/publish/**",
+      "methods": ["POST", "PUT"],
+      "allowedRoles": ["editor", "admin"],
+      "requiredPermissions": ["publish:content"]
+    },
+    {
+      "urlPattern": "/api/reports/**",
+      "methods": ["GET"],
+      "allowedRoles": ["manager", "admin"],
+      "requiredPermissions": ["view:reports"]
+    },
+    {
+      "urlPattern": "/api/admin/users/**",
+      "methods": ["GET", "POST", "PUT", "DELETE"],
+      "allowedRoles": ["admin"],
+      "requiredPermissions": ["manage:users"]
+    },
+    {
+      "urlPattern": "/api/system/logs/**",
+      "methods": ["GET"],
+      "allowedRoles": ["developer", "admin"],
+      "requiredPermissions": ["view:logs"]
+    },
+    {
+      "urlPattern": "/api/system/config/**",
+      "methods": ["GET", "PUT"],
+      "allowedRoles": ["developer", "admin"],
+      "requiredPermissions": ["edit:system"]
+    }
+  ],
+  "authentication": {
+    "provider": "jwt",
+    "loginUrl": "/api/auth/login",
+    "logoutUrl": "/api/auth/logout",
+    "tokenStorage": "localStorage",
+    "tokenExpirationTime": 3600,
+    "autoRefreshToken": true,
+    "refreshTokenUrl": "/api/auth/refresh",
+    "redirectToLogin": true,
+    "storeReturnUrl": true
+  }
+} 

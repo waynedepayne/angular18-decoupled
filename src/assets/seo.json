@@ -1,0 +1,213 @@
+{
+  "global": {
+    "siteName": "Angular Enterprise App",
+    "titleSeparator": " | ",
+    "defaultDescription": "A highly configurable Angular 18 enterprise application with runtime JSON configuration",
+    "defaultKeywords": "angular, enterprise, json, configuration, runtime",
+    "defaultRobots": "index, follow",
+    "appendSiteNameToTitle": true
+  },
+  "routes": [
+    {
+      "path": "/",
+      "title": "Home",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Welcome to our Angular 18 Enterprise Application with runtime JSON configuration"
+        },
+        {
+          "name": "keywords",
+          "content": "angular, home, enterprise, dashboard"
+        }
+      ],
+      "og": {
+        "title": "Angular Enterprise App - Home",
+        "description": "Welcome to our Angular 18 Enterprise Application",
+        "type": "website",
+        "image": "https://example.com/images/home-og.jpg"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Angular Enterprise App - Home",
+        "description": "Welcome to our Angular 18 Enterprise Application",
+        "image": "https://example.com/images/home-twitter.jpg"
+      },
+      "structuredData": ["organization", "website"],
+      "prerender": true
+    },
+    {
+      "path": "/products",
+      "title": "Products",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Browse our product catalog with dynamic filtering and sorting"
+        },
+        {
+          "name": "keywords",
+          "content": "products, catalog, angular, enterprise"
+        }
+      ],
+      "og": {
+        "title": "Our Product Catalog",
+        "description": "Browse our extensive product catalog",
+        "type": "website",
+        "image": "https://example.com/images/products-og.jpg"
+      },
+      "twitter": {
+        "card": "summary",
+        "description": "Browse our extensive product catalog"
+      },
+      "structuredData": ["productList"],
+      "prerender": true
+    },
+    {
+      "path": "/products/*",
+      "title": "Product Details",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Detailed product information and specifications"
+        }
+      ],
+      "og": {
+        "type": "product"
+      },
+      "structuredData": ["product"],
+      "prerender": false
+    },
+    {
+      "path": "/about",
+      "title": "About Us",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Learn about our company history, mission, and team"
+        },
+        {
+          "name": "keywords",
+          "content": "about, company, mission, team, history"
+        }
+      ],
+      "og": {
+        "image": "https://example.com/images/about-og.jpg"
+      },
+      "prerender": true
+    },
+    {
+      "path": "/contact",
+      "title": "Contact Us",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Get in touch with our team for inquiries and support"
+        }
+      ],
+      "structuredData": ["localBusiness"],
+      "prerender": true
+    },
+    {
+      "path": "/blog",
+      "title": "Blog",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Read our latest articles and updates"
+        }
+      ],
+      "og": {
+        "type": "blog"
+      },
+      "prerender": true
+    },
+    {
+      "path": "/blog/*",
+      "title": "Blog Post",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Read our detailed blog post"
+        }
+      ],
+      "og": {
+        "type": "article"
+      },
+      "twitter": {
+        "card": "summary_large_image"
+      },
+      "structuredData": ["blogPosting"],
+      "prerender": false
+    },
+    {
+      "path": "/admin/*",
+      "title": "Admin Dashboard",
+      "robots": "noindex, nofollow",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Admin dashboard for managing the application"
+        }
+      ],
+      "prerender": false
+    }
+  ],
+  "defaultRoute": {
+    "path": "/*",
+    "title": "Page Not Found",
+    "meta": [
+      {
+        "name": "description",
+        "content": "The requested page could not be found"
+      },
+      {
+        "name": "robots",
+        "content": "noindex, nofollow"
+      }
+    ],
+    "prerender": false
+  },
+  "socialMedia": {
+    "facebook": {
+      "appId": "123456789012345",
+      "defaultType": "website"
+    },
+    "twitter": {
+      "defaultCard": "summary",
+      "site": "@AngularEnterprise",
+      "creator": "@AngularDev"
+    }
+  },
+  "structuredData": [
+    {
+      "id": "organization",
+      "jsonLd": "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"Angular Enterprise\",\"url\":\"https://example.com\",\"logo\":\"https://example.com/images/logo.png\",\"contactPoint\":{\"@type\":\"ContactPoint\",\"telephone\":\"+1-555-555-5555\",\"contactType\":\"customer service\"}}"
+    },
+    {
+      "id": "website",
+      "jsonLd": "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"Angular Enterprise App\",\"url\":\"https://example.com\",\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":\"https://example.com/search?q={search_term_string}\",\"query-input\":\"required name=search_term_string\"}}"
+    },
+    {
+      "id": "product",
+      "jsonLd": "{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"name\":\"Product Name\",\"image\":\"https://example.com/images/product.jpg\",\"description\":\"Product description\",\"brand\":{\"@type\":\"Brand\",\"name\":\"Brand Name\"},\"offers\":{\"@type\":\"Offer\",\"priceCurrency\":\"USD\",\"price\":\"19.99\",\"availability\":\"https://schema.org/InStock\"}}"
+    },
+    {
+      "id": "productList",
+      "jsonLd": "{\"@context\":\"https://schema.org\",\"@type\":\"ItemList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"Product\",\"name\":\"Product 1\",\"url\":\"https://example.com/products/1\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"Product\",\"name\":\"Product 2\",\"url\":\"https://example.com/products/2\"}}]}"
+    },
+    {
+      "id": "localBusiness",
+      "jsonLd": "{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"name\":\"Angular Enterprise\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"123 Main St\",\"addressLocality\":\"San Francisco\",\"addressRegion\":\"CA\",\"postalCode\":\"94105\",\"addressCountry\":\"US\"},\"telephone\":\"+1-555-555-5555\",\"openingHours\":\"Mo-Fr 09:00-17:00\"}"
+    },
+    {
+      "id": "blogPosting",
+      "jsonLd": "{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Blog Post Title\",\"image\":\"https://example.com/images/blog-post.jpg\",\"datePublished\":\"2023-01-01T08:00:00+08:00\",\"dateModified\":\"2023-01-02T08:00:00+08:00\",\"author\":{\"@type\":\"Person\",\"name\":\"Author Name\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Angular Enterprise\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://example.com/images/logo.png\"}}}"
+    }
+  ],
+  "canonicalUrls": {
+    "baseUrl": "https://example.com",
+    "trailingSlash": false,
+    "forceHttps": true,
+    "includeQueryParams": false
+  }
+} 

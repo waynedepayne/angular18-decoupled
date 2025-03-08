@@ -1,0 +1,30 @@
+{
+  "environmentName": "production",
+  "apiEndpoint": "https://api.dev.example.com",
+  "featureFlags": {
+    "enableServiceWorker": false,
+    "enableDarkMode": true,
+    "enableBetaFeatures": false,
+    "enableAnalytics": true
+  },
+  "auth": {
+    "tokenExpiryMinutes": 60,
+    "refreshTokenExpiryDays": 7,
+    "authEndpoint": "https://auth.dev.example.com"
+  },
+  "performance": {
+    "cacheTimeoutMinutes": 15,
+    "maxConcurrentRequests": 5,
+    "enablePrefetching": true
+  },
+  "ui": {
+    "defaultTheme": "light",
+    "animationsEnabled": true,
+    "defaultLanguage": "en"
+  },
+  "logging": {
+    "logLevel": "debug",
+    "enableRemoteLogging": true,
+    "remoteLogEndpoint": "https://logs.dev.example.com"
+  }
+} 

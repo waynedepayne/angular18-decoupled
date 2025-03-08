@@ -1,0 +1,233 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2023-07-15T12:00:00Z",
+  "defaultTheme": "light",
+  "respectUserPreference": true,
+  "themes": {
+    "light": {
+      "name": "Light",
+      "description": "Default light theme",
+      "isDark": false,
+      "variables": {
+        "--color-primary": "#3f51b5",
+        "--color-primary-light": "#757de8",
+        "--color-primary-dark": "#002984",
+        "--color-primary-contrast": "#ffffff",
+        
+        "--color-secondary": "#f50057",
+        "--color-secondary-light": "#ff5983",
+        "--color-secondary-dark": "#bb002f",
+        "--color-secondary-contrast": "#ffffff",
+        
+        "--color-background": "#ffffff",
+        "--color-surface": "#f5f5f5",
+        "--color-error": "#b00020",
+        "--color-success": "#4caf50",
+        "--color-warning": "#ff9800",
+        "--color-info": "#2196f3",
+        
+        "--color-text-primary": "#212121",
+        "--color-text-secondary": "#757575",
+        "--color-text-disabled": "#9e9e9e",
+        "--color-text-hint": "#9e9e9e",
+        
+        "--color-divider": "#e0e0e0",
+        "--color-overlay": "rgba(0, 0, 0, 0.5)",
+        
+        "--shadow-1": "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
+        "--shadow-2": "0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12)",
+        "--shadow-3": "0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)",
+        "--shadow-4": "0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05)",
+        "--shadow-5": "0 20px 40px rgba(0, 0, 0, 0.2)"
+      }
+    },
+    "dark": {
+      "name": "Dark",
+      "description": "Default dark theme",
+      "isDark": true,
+      "variables": {
+        "--color-primary": "#7986cb",
+        "--color-primary-light": "#aab6fe",
+        "--color-primary-dark": "#49599a",
+        "--color-primary-contrast": "#ffffff",
+        
+        "--color-secondary": "#ff4081",
+        "--color-secondary-light": "#ff79b0",
+        "--color-secondary-dark": "#c60055",
+        "--color-secondary-contrast": "#ffffff",
+        
+        "--color-background": "#121212",
+        "--color-surface": "#1e1e1e",
+        "--color-error": "#cf6679",
+        "--color-success": "#81c784",
+        "--color-warning": "#ffb74d",
+        "--color-info": "#64b5f6",
+        
+        "--color-text-primary": "#ffffff",
+        "--color-text-secondary": "#b0b0b0",
+        "--color-text-disabled": "#6c6c6c",
+        "--color-text-hint": "#6c6c6c",
+        
+        "--color-divider": "#2e2e2e",
+        "--color-overlay": "rgba(0, 0, 0, 0.7)",
+        
+        "--shadow-1": "0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.4)",
+        "--shadow-2": "0 3px 6px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.22)",
+        "--shadow-3": "0 10px 20px rgba(0, 0, 0, 0.25), 0 3px 6px rgba(0, 0, 0, 0.2)",
+        "--shadow-4": "0 15px 25px rgba(0, 0, 0, 0.25), 0 5px 10px rgba(0, 0, 0, 0.15)",
+        "--shadow-5": "0 20px 40px rgba(0, 0, 0, 0.3)"
+      }
+    },
+    "highContrast": {
+      "name": "High Contrast",
+      "description": "High contrast theme for accessibility",
+      "isDark": true,
+      "variables": {
+        "--color-primary": "#ffff00",
+        "--color-primary-light": "#ffff00",
+        "--color-primary-dark": "#ffff00",
+        "--color-primary-contrast": "#000000",
+        
+        "--color-secondary": "#00ffff",
+        "--color-secondary-light": "#00ffff",
+        "--color-secondary-dark": "#00ffff",
+        "--color-secondary-contrast": "#000000",
+        
+        "--color-background": "#000000",
+        "--color-surface": "#000000",
+        "--color-error": "#ff0000",
+        "--color-success": "#00ff00",
+        "--color-warning": "#ffff00",
+        "--color-info": "#00ffff",
+        
+        "--color-text-primary": "#ffffff",
+        "--color-text-secondary": "#ffffff",
+        "--color-text-disabled": "#ffffff",
+        "--color-text-hint": "#ffffff",
+        
+        "--color-divider": "#ffffff",
+        "--color-overlay": "rgba(0, 0, 0, 0.9)",
+        
+        "--shadow-1": "none",
+        "--shadow-2": "none",
+        "--shadow-3": "none",
+        "--shadow-4": "none",
+        "--shadow-5": "none"
+      }
+    },
+    "brand": {
+      "name": "Brand Theme",
+      "description": "Custom brand theme",
+      "isDark": false,
+      "extends": "light",
+      "variables": {
+        "--color-primary": "#6200ee",
+        "--color-primary-light": "#9e47ff",
+        "--color-primary-dark": "#0400ba",
+        "--color-secondary": "#03dac6",
+        "--color-secondary-light": "#66fff9",
+        "--color-secondary-dark": "#00a895"
+      }
+    },
+    "festive": {
+      "name": "Festive",
+      "description": "Holiday theme",
+      "isDark": false,
+      "extends": "light",
+      "variables": {
+        "--color-primary": "#d50000",
+        "--color-primary-light": "#ff5131",
+        "--color-primary-dark": "#9b0000",
+        "--color-secondary": "#00c853",
+        "--color-secondary-light": "#5efc82",
+        "--color-secondary-dark": "#009624"
+      },
+      "cssFile": "assets/themes/festive.css"
+    }
+  },
+  "globalVariables": {
+    "--border-radius-small": "2px",
+    "--border-radius-medium": "4px",
+    "--border-radius-large": "8px",
+    "--border-radius-xl": "16px",
+    "--border-radius-circle": "50%",
+    
+    "--spacing-xs": "4px",
+    "--spacing-sm": "8px",
+    "--spacing-md": "16px",
+    "--spacing-lg": "24px",
+    "--spacing-xl": "32px",
+    "--spacing-xxl": "48px",
+    
+    "--container-sm": "600px",
+    "--container-md": "900px",
+    "--container-lg": "1200px",
+    "--container-xl": "1600px"
+  },
+  "fonts": {
+    "primaryFont": "'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+    "secondaryFont": "Georgia, 'Times New Roman', serif",
+    "monoFont": "'Courier New', monospace",
+    "baseFontSize": "16px",
+    "fontSizes": {
+      "xs": "0.75rem",
+      "sm": "0.875rem",
+      "md": "1rem",
+      "lg": "1.125rem",
+      "xl": "1.25rem",
+      "xxl": "1.5rem",
+      "h1": "2.5rem",
+      "h2": "2rem",
+      "h3": "1.75rem",
+      "h4": "1.5rem",
+      "h5": "1.25rem",
+      "h6": "1rem"
+    },
+    "fontWeights": {
+      "light": 300,
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "lineHeights": {
+      "tight": 1.2,
+      "normal": 1.5,
+      "loose": 1.8
+    },
+    "letterSpacings": {
+      "tight": "-0.05em",
+      "normal": "0",
+      "wide": "0.05em"
+    }
+  },
+  "breakpoints": {
+    "xs": "0px",
+    "sm": "600px",
+    "md": "960px",
+    "lg": "1280px",
+    "xl": "1920px"
+  },
+  "zIndexLayers": {
+    "base": 0,
+    "above": 1,
+    "dropdown": 1000,
+    "sticky": 1100,
+    "fixed": 1200,
+    "overlay": 1300,
+    "modal": 1400,
+    "popover": 1500,
+    "tooltip": 1600,
+    "toast": 1700,
+    "top": 2000
+  },
+  "animationDurations": {
+    "shortest": "150ms",
+    "shorter": "200ms",
+    "short": "250ms",
+    "standard": "300ms",
+    "complex": "375ms",
+    "entering": "225ms",
+    "leaving": "195ms"
+  }
+} 

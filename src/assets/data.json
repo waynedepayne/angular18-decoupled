@@ -1,0 +1,371 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2023-07-15T12:00:00Z",
+  "referenceData": {
+    "countries": [
+      { "code": "US", "name": "United States", "phoneCode": "+1" },
+      { "code": "CA", "name": "Canada", "phoneCode": "+1" },
+      { "code": "GB", "name": "United Kingdom", "phoneCode": "+44" },
+      { "code": "DE", "name": "Germany", "phoneCode": "+49" },
+      { "code": "FR", "name": "France", "phoneCode": "+33" },
+      { "code": "JP", "name": "Japan", "phoneCode": "+81" },
+      { "code": "AU", "name": "Australia", "phoneCode": "+61" },
+      { "code": "BR", "name": "Brazil", "phoneCode": "+55" },
+      { "code": "IN", "name": "India", "phoneCode": "+91" },
+      { "code": "CN", "name": "China", "phoneCode": "+86" }
+    ],
+    "currencies": [
+      { "code": "USD", "name": "US Dollar", "symbol": "$" },
+      { "code": "EUR", "name": "Euro", "symbol": "€" },
+      { "code": "GBP", "name": "British Pound", "symbol": "£" },
+      { "code": "JPY", "name": "Japanese Yen", "symbol": "¥" },
+      { "code": "CAD", "name": "Canadian Dollar", "symbol": "C$" },
+      { "code": "AUD", "name": "Australian Dollar", "symbol": "A$" },
+      { "code": "CNY", "name": "Chinese Yuan", "symbol": "¥" },
+      { "code": "INR", "name": "Indian Rupee", "symbol": "₹" },
+      { "code": "BRL", "name": "Brazilian Real", "symbol": "R$" }
+    ],
+    "statuses": [
+      { "code": "ACTIVE", "name": "Active", "category": "general" },
+      { "code": "INACTIVE", "name": "Inactive", "category": "general" },
+      { "code": "PENDING", "name": "Pending", "category": "general" },
+      { "code": "DRAFT", "name": "Draft", "category": "document" },
+      { "code": "SUBMITTED", "name": "Submitted", "category": "document" },
+      { "code": "APPROVED", "name": "Approved", "category": "document" },
+      { "code": "REJECTED", "name": "Rejected", "category": "document" },
+      { "code": "PROCESSING", "name": "Processing", "category": "order" },
+      { "code": "SHIPPED", "name": "Shipped", "category": "order" },
+      { "code": "DELIVERED", "name": "Delivered", "category": "order" },
+      { "code": "CANCELLED", "name": "Cancelled", "category": "order" },
+      { "code": "RETURNED", "name": "Returned", "category": "order" }
+    ],
+    "paymentMethods": [
+      { "id": "CREDIT", "name": "Credit Card", "isActive": true, "processingFee": 2.9 },
+      { "id": "DEBIT", "name": "Debit Card", "isActive": true, "processingFee": 1.5 },
+      { "id": "BANK", "name": "Bank Transfer", "isActive": true, "processingFee": 0.5 },
+      { "id": "PAYPAL", "name": "PayPal", "isActive": true, "processingFee": 3.5 },
+      { "id": "CRYPTO", "name": "Cryptocurrency", "isActive": false, "processingFee": 1.0 },
+      { "id": "CHECK", "name": "Check", "isActive": true, "processingFee": 0 }
+    ],
+    "units": [
+      { "code": "EA", "name": "Each", "category": "quantity" },
+      { "code": "PK", "name": "Pack", "category": "quantity" },
+      { "code": "BX", "name": "Box", "category": "quantity" },
+      { "code": "CS", "name": "Case", "category": "quantity" },
+      { "code": "KG", "name": "Kilogram", "category": "weight" },
+      { "code": "G", "name": "Gram", "category": "weight" },
+      { "code": "LB", "name": "Pound", "category": "weight" },
+      { "code": "OZ", "name": "Ounce", "category": "weight" },
+      { "code": "L", "name": "Liter", "category": "volume" },
+      { "code": "ML", "name": "Milliliter", "category": "volume" },
+      { "code": "GAL", "name": "Gallon", "category": "volume" },
+      { "code": "M", "name": "Meter", "category": "length" },
+      { "code": "CM", "name": "Centimeter", "category": "length" },
+      { "code": "FT", "name": "Foot", "category": "length" },
+      { "code": "IN", "name": "Inch", "category": "length" }
+    ]
+  },
+  "products": [
+    {
+      "id": "PROD-001",
+      "name": "Premium Laptop",
+      "description": "High-performance laptop for professionals",
+      "sku": "TECH-LAPTOP-001",
+      "price": 1299.99,
+      "currency": "USD",
+      "categoryId": "CAT-TECH",
+      "isActive": true,
+      "attributes": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "15.6 inch 4K"
+      },
+      "imageUrl": "assets/images/products/laptop.jpg",
+      "inventoryLevel": 45
+    },
+    {
+      "id": "PROD-002",
+      "name": "Wireless Headphones",
+      "description": "Noise-cancelling wireless headphones",
+      "sku": "TECH-AUDIO-001",
+      "price": 249.99,
+      "currency": "USD",
+      "categoryId": "CAT-TECH",
+      "isActive": true,
+      "attributes": {
+        "type": "Over-ear",
+        "batteryLife": "30 hours",
+        "connectivity": "Bluetooth 5.0"
+      },
+      "imageUrl": "assets/images/products/headphones.jpg",
+      "inventoryLevel": 120
+    },
+    {
+      "id": "PROD-003",
+      "name": "Ergonomic Office Chair",
+      "description": "Comfortable chair for long work hours",
+      "sku": "FURN-CHAIR-001",
+      "price": 349.99,
+      "currency": "USD",
+      "categoryId": "CAT-FURN",
+      "isActive": true,
+      "attributes": {
+        "material": "Mesh",
+        "adjustable": true,
+        "color": "Black"
+      },
+      "imageUrl": "assets/images/products/chair.jpg",
+      "inventoryLevel": 35
+    },
+    {
+      "id": "PROD-004",
+      "name": "Standing Desk",
+      "description": "Adjustable height standing desk",
+      "sku": "FURN-DESK-001",
+      "price": 599.99,
+      "currency": "USD",
+      "categoryId": "CAT-FURN",
+      "isActive": true,
+      "attributes": {
+        "material": "Bamboo",
+        "motorized": true,
+        "dimensions": "60\" x 30\""
+      },
+      "imageUrl": "assets/images/products/desk.jpg",
+      "inventoryLevel": 20
+    },
+    {
+      "id": "PROD-005",
+      "name": "Smartphone",
+      "description": "Latest model smartphone with advanced camera",
+      "sku": "TECH-PHONE-001",
+      "price": 899.99,
+      "currency": "USD",
+      "categoryId": "CAT-TECH",
+      "isActive": true,
+      "attributes": {
+        "storage": "256GB",
+        "camera": "48MP",
+        "screen": "6.5 inch OLED"
+      },
+      "imageUrl": "assets/images/products/smartphone.jpg",
+      "inventoryLevel": 75
+    }
+  ],
+  "roles": [
+    {
+      "id": "ADMIN",
+      "name": "Administrator",
+      "description": "Full system access",
+      "isDefault": false,
+      "permissions": ["read", "write", "delete", "admin"]
+    },
+    {
+      "id": "MANAGER",
+      "name": "Manager",
+      "description": "Department management access",
+      "isDefault": false,
+      "permissions": ["read", "write", "reports"]
+    },
+    {
+      "id": "USER",
+      "name": "Standard User",
+      "description": "Regular user access",
+      "isDefault": true,
+      "permissions": ["read", "write"]
+    },
+    {
+      "id": "GUEST",
+      "name": "Guest",
+      "description": "Limited read-only access",
+      "isDefault": false,
+      "permissions": ["read"]
+    },
+    {
+      "id": "DEVELOPER",
+      "name": "Developer",
+      "description": "Technical development access",
+      "isDefault": false,
+      "permissions": ["read", "write", "delete", "api"]
+    }
+  ],
+  "organizations": [
+    {
+      "id": "ORG-001",
+      "name": "Acme Corporation",
+      "type": "enterprise",
+      "isActive": true,
+      "contactEmail": "info@acme.example.com",
+      "contactPhone": "+1-555-123-4567",
+      "address": {
+        "street": "123 Main Street",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": "10001",
+        "country": "US"
+      }
+    },
+    {
+      "id": "ORG-002",
+      "name": "TechStart Inc.",
+      "type": "startup",
+      "isActive": true,
+      "contactEmail": "hello@techstart.example.com",
+      "contactPhone": "+1-555-987-6543",
+      "address": {
+        "street": "456 Innovation Way",
+        "city": "San Francisco",
+        "state": "CA",
+        "postalCode": "94107",
+        "country": "US"
+      }
+    },
+    {
+      "id": "ORG-003",
+      "name": "Global Services Ltd.",
+      "type": "enterprise",
+      "isActive": true,
+      "contactEmail": "contact@globalservices.example.com",
+      "contactPhone": "+44-20-1234-5678",
+      "address": {
+        "street": "1 Business Square",
+        "city": "London",
+        "postalCode": "EC1A 1BB",
+        "country": "GB"
+      }
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "SUP-001",
+      "name": "Tech Components Inc.",
+      "code": "TCI",
+      "isActive": true,
+      "contactPerson": "John Smith",
+      "contactEmail": "john@techcomponents.example.com",
+      "contactPhone": "+1-555-111-2222",
+      "paymentTerms": "Net 30",
+      "address": {
+        "street": "789 Supply Drive",
+        "city": "Austin",
+        "state": "TX",
+        "postalCode": "78701",
+        "country": "US"
+      }
+    },
+    {
+      "id": "SUP-002",
+      "name": "Office Furnishings Ltd.",
+      "code": "OFL",
+      "isActive": true,
+      "contactPerson": "Emma Johnson",
+      "contactEmail": "emma@officefurnishings.example.com",
+      "contactPhone": "+1-555-333-4444",
+      "paymentTerms": "Net 45",
+      "address": {
+        "street": "101 Furniture Lane",
+        "city": "Grand Rapids",
+        "state": "MI",
+        "postalCode": "49503",
+        "country": "US"
+      }
+    },
+    {
+      "id": "SUP-003",
+      "name": "Global Electronics",
+      "code": "GE",
+      "isActive": true,
+      "contactPerson": "Wei Zhang",
+      "contactEmail": "wei@globalelectronics.example.com",
+      "contactPhone": "+86-10-5555-6666",
+      "paymentTerms": "Net 60",
+      "address": {
+        "street": "200 Electronics Boulevard",
+        "city": "Shenzhen",
+        "postalCode": "518000",
+        "country": "CN"
+      }
+    },
+    {
+      "id": "SUP-004",
+      "name": "Premium Materials Co.",
+      "code": "PMC",
+      "isActive": false,
+      "contactPerson": "Maria Garcia",
+      "contactEmail": "maria@premiummaterials.example.com",
+      "contactPhone": "+1-555-777-8888",
+      "paymentTerms": "Net 15",
+      "address": {
+        "street": "555 Material Way",
+        "city": "Chicago",
+        "state": "IL",
+        "postalCode": "60601",
+        "country": "US"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "CAT-TECH",
+      "name": "Technology",
+      "description": "Electronic devices and accessories",
+      "isActive": true,
+      "displayOrder": 1
+    },
+    {
+      "id": "CAT-TECH-COMP",
+      "name": "Computers",
+      "description": "Laptops, desktops, and accessories",
+      "parentId": "CAT-TECH",
+      "isActive": true,
+      "displayOrder": 1
+    },
+    {
+      "id": "CAT-TECH-MOBILE",
+      "name": "Mobile Devices",
+      "description": "Smartphones, tablets, and accessories",
+      "parentId": "CAT-TECH",
+      "isActive": true,
+      "displayOrder": 2
+    },
+    {
+      "id": "CAT-TECH-AUDIO",
+      "name": "Audio Equipment",
+      "description": "Headphones, speakers, and audio accessories",
+      "parentId": "CAT-TECH",
+      "isActive": true,
+      "displayOrder": 3
+    },
+    {
+      "id": "CAT-FURN",
+      "name": "Furniture",
+      "description": "Office and home furniture",
+      "isActive": true,
+      "displayOrder": 2
+    },
+    {
+      "id": "CAT-FURN-OFFICE",
+      "name": "Office Furniture",
+      "description": "Desks, chairs, and office storage",
+      "parentId": "CAT-FURN",
+      "isActive": true,
+      "displayOrder": 1
+    },
+    {
+      "id": "CAT-FURN-HOME",
+      "name": "Home Furniture",
+      "description": "Living room, bedroom, and dining furniture",
+      "parentId": "CAT-FURN",
+      "isActive": true,
+      "displayOrder": 2
+    },
+    {
+      "id": "CAT-SUPPLIES",
+      "name": "Office Supplies",
+      "description": "Paper, writing instruments, and office accessories",
+      "isActive": true,
+      "displayOrder": 3
+    }
+  ]
+} 

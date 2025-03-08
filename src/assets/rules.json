@@ -1,0 +1,524 @@
+{
+  "forms": {
+    "userProfile": {
+      "title": "User Profile",
+      "description": "Manage your personal information",
+      "submitButton": "Save Profile",
+      "cancelButton": "Cancel",
+      "fields": [
+        {
+          "key": "personalInfo",
+          "wrappers": ["panel"],
+          "templateOptions": {
+            "label": "Personal Information"
+          },
+          "fieldGroup": [
+            {
+              "key": "firstName",
+              "type": "input",
+              "templateOptions": {
+                "label": "First Name",
+                "placeholder": "Enter your first name",
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              },
+              "validation": {
+                "messages": {
+                  "required": "First name is required",
+                  "minlength": "First name must be at least 2 characters",
+                  "maxlength": "First name cannot exceed 50 characters"
+                }
+              }
+            },
+            {
+              "key": "lastName",
+              "type": "input",
+              "templateOptions": {
+                "label": "Last Name",
+                "placeholder": "Enter your last name",
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              },
+              "validation": {
+                "messages": {
+                  "required": "Last name is required",
+                  "minlength": "Last name must be at least 2 characters",
+                  "maxlength": "Last name cannot exceed 50 characters"
+                }
+              }
+            },
+            {
+              "key": "email",
+              "type": "input",
+              "templateOptions": {
+                "type": "email",
+                "label": "Email Address",
+                "placeholder": "Enter your email",
+                "required": true,
+                "pattern": "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+              },
+              "validation": {
+                "messages": {
+                  "required": "Email is required",
+                  "pattern": "Please enter a valid email address"
+                }
+              }
+            },
+            {
+              "key": "dateOfBirth",
+              "type": "datepicker",
+              "templateOptions": {
+                "label": "Date of Birth",
+                "placeholder": "MM/DD/YYYY",
+                "required": true
+              },
+              "validation": {
+                "messages": {
+                  "required": "Date of birth is required"
+                }
+              },
+              "expressionProperties": {
+                "templateOptions.max": "new Date()"
+              }
+            }
+          ]
+        },
+        {
+          "key": "addressInfo",
+          "wrappers": ["panel"],
+          "templateOptions": {
+            "label": "Address Information"
+          },
+          "fieldGroup": [
+            {
+              "key": "addressLine1",
+              "type": "input",
+              "templateOptions": {
+                "label": "Address Line 1",
+                "placeholder": "Enter your street address",
+                "required": true
+              }
+            },
+            {
+              "key": "addressLine2",
+              "type": "input",
+              "templateOptions": {
+                "label": "Address Line 2",
+                "placeholder": "Apartment, suite, unit, etc. (optional)"
+              }
+            },
+            {
+              "key": "city",
+              "type": "input",
+              "templateOptions": {
+                "label": "City",
+                "placeholder": "Enter your city",
+                "required": true
+              }
+            },
+            {
+              "key": "state",
+              "type": "select",
+              "templateOptions": {
+                "label": "State",
+                "placeholder": "Select your state",
+                "required": true,
+                "options": [
+                  { "label": "Alabama", "value": "AL" },
+                  { "label": "Alaska", "value": "AK" },
+                  { "label": "Arizona", "value": "AZ" },
+                  { "label": "Arkansas", "value": "AR" },
+                  { "label": "California", "value": "CA" },
+                  { "label": "Colorado", "value": "CO" },
+                  { "label": "Connecticut", "value": "CT" },
+                  { "label": "Delaware", "value": "DE" },
+                  { "label": "Florida", "value": "FL" },
+                  { "label": "Georgia", "value": "GA" },
+                  { "label": "Hawaii", "value": "HI" },
+                  { "label": "Idaho", "value": "ID" },
+                  { "label": "Illinois", "value": "IL" },
+                  { "label": "Indiana", "value": "IN" },
+                  { "label": "Iowa", "value": "IA" },
+                  { "label": "Kansas", "value": "KS" },
+                  { "label": "Kentucky", "value": "KY" },
+                  { "label": "Louisiana", "value": "LA" },
+                  { "label": "Maine", "value": "ME" },
+                  { "label": "Maryland", "value": "MD" },
+                  { "label": "Massachusetts", "value": "MA" },
+                  { "label": "Michigan", "value": "MI" },
+                  { "label": "Minnesota", "value": "MN" },
+                  { "label": "Mississippi", "value": "MS" },
+                  { "label": "Missouri", "value": "MO" },
+                  { "label": "Montana", "value": "MT" },
+                  { "label": "Nebraska", "value": "NE" },
+                  { "label": "Nevada", "value": "NV" },
+                  { "label": "New Hampshire", "value": "NH" },
+                  { "label": "New Jersey", "value": "NJ" },
+                  { "label": "New Mexico", "value": "NM" },
+                  { "label": "New York", "value": "NY" },
+                  { "label": "North Carolina", "value": "NC" },
+                  { "label": "North Dakota", "value": "ND" },
+                  { "label": "Ohio", "value": "OH" },
+                  { "label": "Oklahoma", "value": "OK" },
+                  { "label": "Oregon", "value": "OR" },
+                  { "label": "Pennsylvania", "value": "PA" },
+                  { "label": "Rhode Island", "value": "RI" },
+                  { "label": "South Carolina", "value": "SC" },
+                  { "label": "South Dakota", "value": "SD" },
+                  { "label": "Tennessee", "value": "TN" },
+                  { "label": "Texas", "value": "TX" },
+                  { "label": "Utah", "value": "UT" },
+                  { "label": "Vermont", "value": "VT" },
+                  { "label": "Virginia", "value": "VA" },
+                  { "label": "Washington", "value": "WA" },
+                  { "label": "West Virginia", "value": "WV" },
+                  { "label": "Wisconsin", "value": "WI" },
+                  { "label": "Wyoming", "value": "WY" }
+                ]
+              }
+            },
+            {
+              "key": "zipCode",
+              "type": "input",
+              "templateOptions": {
+                "label": "Zip Code",
+                "placeholder": "Enter your zip code",
+                "required": true,
+                "pattern": "^\\d{5}(-\\d{4})?$"
+              },
+              "validation": {
+                "messages": {
+                  "pattern": "Please enter a valid zip code (e.g., 12345 or 12345-6789)"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "preferences",
+          "wrappers": ["panel"],
+          "templateOptions": {
+            "label": "Preferences"
+          },
+          "fieldGroup": [
+            {
+              "key": "receiveNewsletter",
+              "type": "checkbox",
+              "templateOptions": {
+                "label": "Receive Newsletter",
+                "description": "Check this if you want to receive our newsletter"
+              }
+            },
+            {
+              "key": "communicationPreferences",
+              "type": "multicheckbox",
+              "templateOptions": {
+                "label": "Communication Preferences",
+                "description": "How would you like to be contacted?",
+                "options": [
+                  { "value": "email", "label": "Email" },
+                  { "value": "sms", "label": "SMS" },
+                  { "value": "phone", "label": "Phone" }
+                ]
+              }
+            },
+            {
+              "key": "theme",
+              "type": "radio",
+              "templateOptions": {
+                "label": "Preferred Theme",
+                "options": [
+                  { "value": "light", "label": "Light" },
+                  { "value": "dark", "label": "Dark" },
+                  { "value": "system", "label": "System Default" }
+                ]
+              },
+              "defaultValue": "system"
+            }
+          ]
+        }
+      ]
+    },
+    "productRegistration": {
+      "title": "Product Registration",
+      "description": "Register your product for warranty",
+      "submitButton": "Register Product",
+      "cancelButton": "Cancel",
+      "fields": [
+        {
+          "key": "productInfo",
+          "wrappers": ["panel"],
+          "templateOptions": {
+            "label": "Product Information"
+          },
+          "fieldGroup": [
+            {
+              "key": "productType",
+              "type": "select",
+              "templateOptions": {
+                "label": "Product Type",
+                "placeholder": "Select product type",
+                "required": true,
+                "options": [
+                  { "label": "Laptop", "value": "laptop" },
+                  { "label": "Desktop", "value": "desktop" },
+                  { "label": "Tablet", "value": "tablet" },
+                  { "label": "Smartphone", "value": "smartphone" },
+                  { "label": "Accessory", "value": "accessory" }
+                ]
+              }
+            },
+            {
+              "key": "modelNumber",
+              "type": "input",
+              "templateOptions": {
+                "label": "Model Number",
+                "placeholder": "Enter the model number",
+                "required": true
+              },
+              "expressionProperties": {
+                "templateOptions.disabled": "!model.productType"
+              }
+            },
+            {
+              "key": "serialNumber",
+              "type": "input",
+              "templateOptions": {
+                "label": "Serial Number",
+                "placeholder": "Enter the serial number",
+                "required": true,
+                "pattern": "^[A-Z0-9]{10,15}$"
+              },
+              "validation": {
+                "messages": {
+                  "pattern": "Serial number must be 10-15 characters (letters and numbers only)"
+                }
+              },
+              "expressionProperties": {
+                "templateOptions.disabled": "!model.productType"
+              }
+            },
+            {
+              "key": "purchaseDate",
+              "type": "datepicker",
+              "templateOptions": {
+                "label": "Purchase Date",
+                "placeholder": "MM/DD/YYYY",
+                "required": true
+              },
+              "expressionProperties": {
+                "templateOptions.max": "new Date()",
+                "templateOptions.disabled": "!model.productType"
+              }
+            }
+          ]
+        },
+        {
+          "key": "purchaseInfo",
+          "wrappers": ["panel"],
+          "templateOptions": {
+            "label": "Purchase Information"
+          },
+          "fieldGroup": [
+            {
+              "key": "retailer",
+              "type": "input",
+              "templateOptions": {
+                "label": "Retailer",
+                "placeholder": "Where did you purchase this product?",
+                "required": true
+              }
+            },
+            {
+              "key": "hasReceipt",
+              "type": "radio",
+              "templateOptions": {
+                "label": "Do you have the receipt?",
+                "options": [
+                  { "value": true, "label": "Yes" },
+                  { "value": false, "label": "No" }
+                ],
+                "required": true
+              }
+            },
+            {
+              "key": "receiptUpload",
+              "type": "file",
+              "templateOptions": {
+                "label": "Upload Receipt",
+                "description": "Upload a photo or scan of your receipt (PDF, JPG, PNG)",
+                "accept": "image/*,.pdf"
+              },
+              "hideExpression": "!model.hasReceipt",
+              "expressionProperties": {
+                "templateOptions.required": "model.hasReceipt"
+              }
+            }
+          ]
+        },
+        {
+          "key": "extendedWarranty",
+          "wrappers": ["panel"],
+          "templateOptions": {
+            "label": "Extended Warranty"
+          },
+          "fieldGroup": [
+            {
+              "key": "interestedInExtendedWarranty",
+              "type": "checkbox",
+              "templateOptions": {
+                "label": "I'm interested in extended warranty options"
+              }
+            },
+            {
+              "key": "warrantyPlan",
+              "type": "radio",
+              "templateOptions": {
+                "label": "Select Warranty Plan",
+                "options": [
+                  { "value": "basic", "label": "Basic (1 year) - $49.99" },
+                  { "value": "premium", "label": "Premium (2 years) - $89.99" },
+                  { "value": "ultimate", "label": "Ultimate (3 years) - $129.99" }
+                ]
+              },
+              "hideExpression": "!model.interestedInExtendedWarranty"
+            }
+          ]
+        }
+      ]
+    },
+    "contactForm": {
+      "title": "Contact Us",
+      "description": "Send us a message and we'll get back to you",
+      "submitButton": "Send Message",
+      "cancelButton": "Cancel",
+      "fields": [
+        {
+          "key": "name",
+          "type": "input",
+          "templateOptions": {
+            "label": "Your Name",
+            "placeholder": "Enter your full name",
+            "required": true
+          }
+        },
+        {
+          "key": "email",
+          "type": "input",
+          "templateOptions": {
+            "type": "email",
+            "label": "Email Address",
+            "placeholder": "Enter your email",
+            "required": true,
+            "pattern": "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+          },
+          "validation": {
+            "messages": {
+              "pattern": "Please enter a valid email address"
+            }
+          }
+        },
+        {
+          "key": "subject",
+          "type": "select",
+          "templateOptions": {
+            "label": "Subject",
+            "placeholder": "Select a subject",
+            "required": true,
+            "options": [
+              { "label": "General Inquiry", "value": "general" },
+              { "label": "Technical Support", "value": "support" },
+              { "label": "Billing Question", "value": "billing" },
+              { "label": "Feature Request", "value": "feature" },
+              { "label": "Bug Report", "value": "bug" }
+            ]
+          }
+        },
+        {
+          "key": "priority",
+          "type": "select",
+          "templateOptions": {
+            "label": "Priority",
+            "placeholder": "Select priority",
+            "required": true,
+            "options": [
+              { "label": "Low", "value": "low" },
+              { "label": "Medium", "value": "medium" },
+              { "label": "High", "value": "high" }
+            ]
+          },
+          "hideExpression": "model.subject !== 'support' && model.subject !== 'bug'"
+        },
+        {
+          "key": "message",
+          "type": "textarea",
+          "templateOptions": {
+            "label": "Message",
+            "placeholder": "Enter your message",
+            "required": true,
+            "rows": 5,
+            "maxLength": 1000
+          },
+          "validation": {
+            "messages": {
+              "required": "Please enter your message",
+              "maxlength": "Message cannot exceed 1000 characters"
+            }
+          }
+        },
+        {
+          "key": "attachments",
+          "type": "file",
+          "templateOptions": {
+            "label": "Attachments",
+            "description": "Upload any relevant files (optional)",
+            "multiple": true,
+            "accept": "image/*,.pdf,.doc,.docx,.txt"
+          }
+        },
+        {
+          "key": "agreeoTerms",
+          "type": "checkbox",
+          "templateOptions": {
+            "label": "I agree to the terms and conditions",
+            "description": "By submitting this form, you agree to our terms of service and privacy policy",
+            "required": true
+          },
+          "validation": {
+            "messages": {
+              "required": "You must agree to the terms and conditions"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "validations": {
+    "patterns": {
+      "email": "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$",
+      "zipCode": "^\\d{5}(-\\d{4})?$",
+      "phone": "^\\(\\d{3}\\)\\s\\d{3}-\\d{4}$",
+      "creditCard": "^\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}$",
+      "serialNumber": "^[A-Z0-9]{10,15}$"
+    },
+    "messages": {
+      "required": "{0} is required",
+      "email": "Please enter a valid email address",
+      "minLength": "{0} must be at least {1} characters",
+      "maxLength": "{0} cannot exceed {1} characters",
+      "pattern": "Please enter a valid {0}",
+      "min": "{0} must be at least {1}",
+      "max": "{0} cannot exceed {1}"
+    }
+  },
+  "wrappers": {
+    "panel": {
+      "template": "<div class=\"card mb-3\"><div class=\"card-header\">{{ to.label }}</div><div class=\"card-body\"><ng-container #fieldComponent></ng-container></div></div>"
+    },
+    "error": {
+      "template": "<div><ng-container #fieldComponent></ng-container><div class=\"invalid-feedback d-block\" *ngIf=\"showError\">{{ errorMessage }}</div></div>"
+    }
+  }
+} 

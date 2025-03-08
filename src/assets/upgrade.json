@@ -1,0 +1,89 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2023-10-15",
+  "enabled": true,
+  "description": "Configuration for hybrid AngularJS/Angular application during migration",
+  "angularJSModules": [
+    "legacyApp",
+    "legacyComponents",
+    "legacyServices"
+  ],
+  "bootstrapElement": "legacy-app",
+  "strictDi": true,
+  "downgradeComponents": [
+    {
+      "name": "modernHeader",
+      "selector": "app-modern-header",
+      "angularJSName": "modernHeader"
+    },
+    {
+      "name": "modernFooter",
+      "selector": "app-modern-footer",
+      "angularJSName": "modernFooter"
+    }
+  ],
+  "upgradeComponents": [
+    {
+      "name": "legacyUserProfile",
+      "selector": "legacy-user-profile",
+      "angularName": "LegacyUserProfileComponent"
+    },
+    {
+      "name": "legacyDashboard",
+      "selector": "legacy-dashboard",
+      "angularName": "LegacyDashboardComponent"
+    },
+    {
+      "name": "legacyReports",
+      "selector": "legacy-reports",
+      "angularName": "LegacyReportsComponent"
+    }
+  ],
+  "upgradeProviders": [
+    {
+      "name": "legacyUserService",
+      "useFactory": "createLegacyUserService",
+      "deps": ["$http"]
+    },
+    {
+      "name": "legacyAuthService",
+      "useFactory": "createLegacyAuthService",
+      "deps": ["$http", "$q"]
+    }
+  ],
+  "downgradeProviders": [
+    {
+      "name": "ModernApiService",
+      "angularJSName": "modernApiService"
+    }
+  ],
+  "routes": [
+    {
+      "path": "/legacy/dashboard",
+      "component": "legacyDashboard",
+      "title": "Legacy Dashboard"
+    },
+    {
+      "path": "/legacy/reports",
+      "component": "legacyReports",
+      "title": "Legacy Reports"
+    },
+    {
+      "path": "/legacy/profile",
+      "component": "legacyUserProfile",
+      "title": "Legacy User Profile"
+    }
+  ],
+  "aotMode": true,
+  "migrationProgress": {
+    "totalComponents": 25,
+    "migratedComponents": 18,
+    "remainingComponents": 7,
+    "completionPercentage": 72
+  },
+  "deprecationNotices": {
+    "enabled": true,
+    "showInUI": true,
+    "message": "This component is using legacy AngularJS code and will be upgraded soon."
+  }
+} 
